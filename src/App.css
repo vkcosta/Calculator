@@ -1,59 +1,88 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  background: #e0e0ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
-  height: 500px;
-  width: 400px;
-  max-width: 400px;
-  border: 1px solid black;
-  border-radius: 10px;
+  background: #e0e0ec;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
   display: flex;
   flex-direction: column;
-}
-
-.container>div,
-input {
-  margin: 1rem;
+  align-items: center;
 }
 
 .display {
-  height: 6rem;
-  border: 1px solid black;
-  border-radius: 10px;
-
-  text-align: end;
+  width: 250px;
+  height: 80px;
+  background: #e0e5ec;
+  border-radius: 15px;
+  box-shadow: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  border: 1px solid black;
-  border-radius: 10px;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 28px;
+  padding: 10px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
-.display>div {
-  height: 90%;
-  border: none;
-  text-align: end;  
-  font-size: clamp(1rem, 3rem, 3rem);
+.value {
+  font-size: clamp(1rem, 18px, 18px);
 }
 
-.display .history {
-  font-size: medium;
+.history {
+  font-size: 18px;
+  color: #7a7a7a;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  grid-template-columns: repeat(4, 60px);
+  gap: 10px;
 }
 
-.grid>button {
-  border: 1px solid black;
-  border-radius: 10px;
+button {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: #e0e5ec;
+  box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-  /* max-width: 50px; */
-  font-size: x-large;
+button:focus {
+  outline: none;
+}
+
+button:active {
+  box-shadow: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
+}
+
+button:nth-child(4n) {
+  background: #ff9f43;
+  color: white;
+}
+
+button:nth-child(4n):active {
+  background: #e07f2d;
+}
+
+button:last-child {
+  background: #2ed573;
+}
+
+button:last-child:active {
+  background: #22a759;
 }

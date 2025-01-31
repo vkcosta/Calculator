@@ -81,7 +81,7 @@ function App() {
           <div className='history'>
             {operador && <div>{prev} {operador}</div>}
           </div>
-          <div >{valor || prev}</div>
+          <div className="value">{valor || prev}</div>
         </div>
 
         <div className="grid">
