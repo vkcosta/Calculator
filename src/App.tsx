@@ -21,14 +21,19 @@ class Calculator {
   }
 }
 
-
 function App() {
+
+
   const [valor, setValor] = useState("");
-  const [prev, setPrev] = useState("");
+  const [prev, setPrev] = useState("0");
   const [operador, setOperador] = useState('');
 
   const digitarNumero = (numero: string): void => {
-    setValor(valor + numero)
+    if (prev == '' && operador == '' && numero != ".") {
+      setValor(numero)
+    } else {
+      setValor(valor + numero)
+    }
   }
 
   const digitarOperador = (op: string) => {
@@ -49,16 +54,18 @@ function App() {
   // };
 
   const calcular = () => {
+
+
     if (!valor || !prev || operador == "") {
       return
     }
 
     const calculator = new Calculator();
     const operadorMap: Record<string, (num1: number, num2: number) => number> = {
-      "+": calculator.somar,
+      '+': calculator.somar,
       "-": calculator.subtrair,
-      "*": calculator.multiplicar,
-      "/": calculator.dividir
+      "×": calculator.multiplicar,
+      "÷": calculator.dividir
     }
 
     try {
@@ -73,6 +80,12 @@ function App() {
     }
   }
 
+  const clear = () => {
+    setValor("");
+    setPrev("0");
+    setOperador("");
+  }
+
   return (
     <>
       <div className="container">
@@ -85,22 +98,26 @@ function App() {
         </div>
 
         <div className="grid">
+          <button className="clear" onClick={() => clear()}>C</button>
+          <button className="operator" onClick={() => digitarOperador('÷')}>÷</button>
           <button onClick={() => digitarNumero('7')}>7</button>
           <button onClick={() => digitarNumero('8')}>8</button>
           <button onClick={() => digitarNumero('9')}>9</button>
-          <button onClick={() => digitarOperador('/')}>÷</button>
+          <button className="operator" onClick={() => digitarOperador('×')}>×</button>
+
           <button onClick={() => digitarNumero('4')}>4</button>
           <button onClick={() => digitarNumero('5')}>5</button>
           <button onClick={() => digitarNumero('6')}>6</button>
-          <button onClick={() => digitarOperador('*')}>×</button>
+          <button className="operator" onClick={() => digitarOperador('-')}>-</button>
+
           <button onClick={() => digitarNumero('1')}>1</button>
           <button onClick={() => digitarNumero('2')}>2</button>
           <button onClick={() => digitarNumero('3')}>3</button>
-          <button onClick={() => digitarOperador('-')}>-</button>
-          <button onClick={() => digitarNumero('0')}>0</button>
+          <button className="operator" onClick={() => digitarOperador('+')}>+</button>
+
+          <button className='grid-columnn-2' onClick={() => digitarNumero('0')}>0</button>
           <button onClick={() => digitarNumero('.')}>.</button>
-          <button onClick={() => digitarOperador('+')}>+</button>
-          <button onClick={() => calcular()}>=</button>
+          <button className="operator" onClick={() => calcular()}>=</button>
         </div>
       </div>
     </>

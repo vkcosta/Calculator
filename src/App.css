@@ -60,6 +60,9 @@ button {
   color: #333;
   cursor: pointer;
   transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:focus {
@@ -70,19 +73,18 @@ button:active {
   box-shadow: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
 }
 
-button:nth-child(4n) {
+.operator {
   background: #ff9f43;
   color: white;
 }
 
-button:nth-child(4n):active {
-  background: #e07f2d;
+
+.clear {
+  background-color: lightcoral;
+  grid-column: span 3;
 }
 
-button:last-child {
-  background: #2ed573;
-}
-
-button:last-child:active {
-  background: #22a759;
+.grid-columnn-2 {
+  grid-column: span 2;
+  width: 100%;
 }
