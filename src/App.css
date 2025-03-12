@@ -1,14 +1,48 @@
+:root {
+  --background-light: #e0e0ec;
+  --background-dark: #121212;
+
+  --button-light: #e0e5ec;
+  --button-dark: #333;
+
+  --button-text-light: #333;
+  --button-text-dark: white;
+
+  --display-light: #e0e5ec;
+  --display-dark: #333;
+
+  --display-text-light: #333;
+  --display-text-dark: white;
+
+  --operator-light: #ff9f43;
+  --operator-dark: #ff5722;
+
+  --clear-light: lightcoral;
+  --clear-dark: #d32f2f;
+}
+
+#toggle-theme {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 25px;
+  font-size: 12px;
+}
+
 body {
-  background: #e0e0ec;
+  background: var(--background-light);
+  color: var(--button-text-light);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
-  background: #e0e0ec;
+  background: var(--background-light);
+  color: var(--button-text-light);
   padding: 20px;
   border-radius: 20px;
   box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
@@ -20,7 +54,7 @@ body {
 .display {
   width: 250px;
   height: 80px;
-  background: #e0e5ec;
+  background: var(--display-light);
   border-radius: 15px;
   box-shadow: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
   display: flex;
@@ -31,6 +65,7 @@ body {
   padding: 10px;
   margin-bottom: 20px;
   word-wrap: break-word;
+  color: var(--display-text-light);
 }
 
 .value {
@@ -52,12 +87,12 @@ button {
   width: 60px;
   height: 60px;
   border-radius: 12px;
-  background: #e0e5ec;
+  background: var(--button-light);
+  color: var(--button-text-light);
   box-shadow: 5px 5px 10px #babecc, -5px -5px 10px #ffffff;
   border: none;
   font-size: 22px;
   font-weight: bold;
-  color: #333;
   cursor: pointer;
   transition: 0.2s;
   display: flex;
@@ -73,18 +108,45 @@ button:active {
   box-shadow: inset 5px 5px 10px #babecc, inset -5px -5px 10px #ffffff;
 }
 
-.operator {
-  background: #ff9f43;
+button.operator {
+  background: var(--operator-light);
   color: white;
 }
 
 
 .clear {
-  background-color: lightcoral;
+  background: var(--clear-light);
   grid-column: span 3;
 }
 
 .grid-columnn-2 {
   grid-column: span 2;
   width: 100%;
+}
+
+/* Estilo para o tema escuro */
+
+body.dark-theme .container {
+  background: var(--background-dark);
+  color: var(--button-text-dark);
+}
+
+body.dark-theme button {
+  background: var(--button-dark);
+  color: var(--button-text-dark);
+  box-shadow: none;
+}
+
+body.dark-theme .display {
+  background: var(--display-dark);
+  color: var(--display-text-dark);
+  box-shadow: none;
+}
+
+body.dark-theme button.operator {
+  background: var(--operator-dark);
+}
+
+body.dark-theme button.clear {
+  background: var(--clear-dark);
 }

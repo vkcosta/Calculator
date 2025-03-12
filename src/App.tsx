@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { Switch } from '@mui/material';
+// import { Switch } from '@mui/material';
 
 class Calculator {
 
@@ -23,10 +25,22 @@ class Calculator {
 
 function App() {
 
-
+  const [darkMode, setDarkMode] = useState(false);
   const [valor, setValor] = useState("");
   const [prev, setPrev] = useState("0");
   const [operador, setOperador] = useState('');
+
+  const handleChangeDarkMode = (event: any) => {
+    setDarkMode(event.target.checked)
+  }
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-theme')
+    } else {
+      document.body.classList.remove('dark-theme')
+    }
+  }, [darkMode]);
 
   const digitarNumero = (numero: string): void => {
     if (prev == '' && operador == '' && numero != ".") {
@@ -88,6 +102,21 @@ function App() {
 
   return (
     <>
+      {/* <button id="toggle-theme" onClick={() =>{
+        const body = document.body;
+        body.classList.toggle('dark-theme');
+      }}>Alternar Tema</button> */}
+
+      <div>
+        <label>Dark Mode</label>
+        <Switch
+          id='theme-switch'
+          checked={darkMode}
+          onChange={(ev) => handleChangeDarkMode(ev)}
+          name='theme-switch'
+        />
+      </div>
+
       <div className="container">
 
         <div className="display">
